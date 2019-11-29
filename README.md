@@ -1,5 +1,8 @@
-# LotterySoftware
-Draw Tool
+![](E:\DEPOSITORY\LotterySoftware\LotterySoftware\Resources\Images\Lottery.png)
+
+# #LotterySoftware
+
+##Draw Tool
 抽奖工具：
 开发语言：C#
 开发工具：Microsoft Visual Studio2017
