@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Award>
+	<Name>三等奖</Name>
+	<Prize>100</Prize>
+	<Number>10</Number>
+
+	<Name>二等奖</Name>
+	<Prize>1000</Prize>
+	<Number>5</Number>
+
+	<Name>一等奖</Name>
+	<Prize>10000</Prize>
+	<Number>1</Number>
+</Award>

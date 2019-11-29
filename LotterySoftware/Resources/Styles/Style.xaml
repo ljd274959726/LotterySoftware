@@ -1,0 +1,472 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="WindowChromeStyle" TargetType="Window">
+        <Setter Property="BorderBrush" Value="#3448a1" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="WindowStyle" Value="None" />
+        <Setter Property="Icon" Value="../Images/Lottery.png" />
+        <Setter Property="AllowsTransparency" Value="True" />
+        <Setter Property="MinHeight" Value="600" />
+        <Setter Property="MinWidth" Value="800" />
+        <Setter Property="Width" Value="800" />
+        <Setter Property="Height" Value="600" />
+        <Setter Property="ResizeMode" Value="CanResize" />
+        <Setter Property="WindowChrome.WindowChrome">
+            <Setter.Value>
+                <WindowChrome
+                    CaptionHeight="0"
+                    CornerRadius="4,4,0,0"
+                    ResizeBorderThickness="4" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CloseButtonStyle" TargetType="Button">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="ToolTip" Value="关闭" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Width" Value="12" />
+        <Setter Property="Height" Value="12" />
+        <Setter Property="Margin" Value="12,16,0,20" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border
+                        Name="border"
+                        Background="{TemplateBinding Background}"
+                        SnapsToDevicePixels="True">
+                        <Grid
+                            Name="placeHolder"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                            <Path
+                                Data="F1M11.706,0.706L11,0 5.852,5.146 0.706,0 -0.001,0.706 5.146,5.852 -0.001,11 0.706,11.706 5.852,6.56 11,11.706 11.706,11 6.56,5.852z"
+                                Fill="#FF9AA4D0"
+                                SnapsToDevicePixels="True"
+                                Stretch="Uniform"
+                                Stroke="{TemplateBinding BorderBrush}"
+                                UseLayoutRounding="True" />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#d01212" />
+                <Setter Property="BorderBrush" Value="#ffffff" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="MinButtonStyle" TargetType="Button">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="ToolTip" Value="最小化" />
+        <Setter Property="Width" Value="15" />
+        <Setter Property="Height" Value="12" />
+        <Setter Property="Margin" Value="716,16,0,20" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border
+                        Name="border"
+                        Background="{TemplateBinding Background}"
+                        SnapsToDevicePixels="True">
+                        <Grid
+                            Name="placeHolder"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                            <Path
+                                Data="F1M0,1L12.001,1 12.001,0 0,0z"
+                                Fill="#FF9AA4D0"
+                                Stretch="Uniform"
+                                Stroke="{TemplateBinding BorderBrush}"
+                                UseLayoutRounding="True" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" Value="#ffffff" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="MaxButtonStyle" TargetType="Button">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="ToolTip" Value="最大化" />
+        <Setter Property="Visibility" Value="Visible" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="Width" Value="12" />
+        <Setter Property="Height" Value="12" />
+        <Setter Property="Margin" Value="11,16,0,20" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border
+                        Name="border"
+                        Background="{TemplateBinding Background}"
+                        SnapsToDevicePixels="True">
+                        <Grid
+                            Name="placeHolder"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                            <Path
+                                Data="F1M11,11L1,11 1,1 11,1z M11,0L1,0 0,0 0,1 0,11 0,12 1,12 11,12 12,12 12,11 12,1 12,0z"
+                                Fill="#FF9AA4D0"
+                                SnapsToDevicePixels="True"
+                                Stretch="Uniform"
+                                Stroke="{TemplateBinding BorderBrush}"
+                                UseLayoutRounding="True" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" Value="#ffffff" />
+                        </Trigger>
+                        <DataTrigger Binding="{Binding IsMaxOrRecoveryButton}" Value="true">
+                            <Setter Property="Visibility" Value="Hidden" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="RecoveryButtonStyle" TargetType="Button">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="ToolTip" Value="向下还原" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="Visibility" Value="Hidden" />
+        <Setter Property="Width" Value="12" />
+        <Setter Property="Height" Value="12" />
+        <Setter Property="Margin" Value="-12,16,0,20" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border
+                        Name="border"
+                        Background="{TemplateBinding Background}"
+                        SnapsToDevicePixels="True">
+                        <Grid
+                            Name="placeHolder"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                            <Path
+                                Data="F1M11,8L9,8 9,4 9,3 8,3 4,3 4,1 11,1z M8,11L1,11 1,4 3,4 4,4 8,4 8,8 8,9z M11,0L4,0 3,0 3,1 3,3 1,3 0,3 0,4 0,11 0,12 1,12 8,12 9,12 9,11 9,9 11,9 12,9 12,8 12,1 12,0z"
+                                Fill="#FF9AA4D0"
+                                SnapsToDevicePixels="True"
+                                Stretch="Uniform"
+                                Stroke="{TemplateBinding BorderBrush}"
+                                UseLayoutRounding="True" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" Value="#ffffff" />
+                        </Trigger>
+                        <DataTrigger Binding="{Binding IsMaxOrRecoveryButton}" Value="true">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="LotteryButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="Width" Value="80" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="FontFamily" Value="MicrosoftYaHei" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="IsEnabled" Value="{Binding CanLottery}" />
+        <Setter Property="Content" Value="抽奖" />
+        <Setter Property="Foreground" Value="#bbbbbb" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border
+                        x:Name="MyBackgroundElement"
+                        BorderBrush="Black"
+                        BorderThickness="1">
+                        <ContentPresenter
+                            x:Name="ButtonContentPresenter"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="True">
+                            <Setter Property="Foreground" Value="#000000" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="MyBackgroundElement" Property="Background" Value="#3448a1" />
+                            <Setter Property="Foreground" Value="White" />
+                        </Trigger>
+                        <DataTrigger Binding="{Binding IsStartOrPause}" Value="true">
+                            <Setter Property="Content" Value="结束" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ImportButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Width" Value="60" />
+        <Setter Property="Height" Value="24" />
+        <Setter Property="Content" Value="导入" />
+        <Setter Property="FontFamily" Value="MicrosoftYaHei" />
+        <Setter Property="Margin" Value="0,20,70,10" />
+        <Setter Property="IsEnabled" Value="True" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border
+                        x:Name="MyBackgroundElement"
+                        BorderBrush="Black"
+                        BorderThickness="1">
+                        <ContentPresenter
+                            x:Name="ButtonContentPresenter"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding CanImport}" Value="false">
+                            <Setter Property="IsEnabled" Value="False" />
+                            <Setter Property="Foreground" Value="#bbbbbb" />
+                        </DataTrigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="MyBackgroundElement" Property="Background" Value="#3448a1" />
+                            <Setter Property="Foreground" Value="White" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ExportButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Content" Value="导出" />
+        <Setter Property="FontFamily" Value="MicrosoftYaHei" />
+        <Setter Property="Width" Value="60" />
+        <Setter Property="Height" Value="24" />
+        <Setter Property="Margin" Value="0,20,0,10" />
+        <Setter Property="IsEnabled" Value="{Binding CanExport}" />
+        <Setter Property="Foreground" Value="#bbbbbb" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border
+                        x:Name="MyBackgroundElement"
+                        BorderBrush="Black"
+                        BorderThickness="1">
+                        <ContentPresenter
+                            x:Name="ButtonContentPresenter"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="True">
+                            <Setter Property="Foreground" Value="#000000" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="MyBackgroundElement" Property="Background" Value="#3448a1" />
+                            <Setter Property="Foreground" Value="White" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="AwardsNameStyle" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="#b5b5b5" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="MicrosoftYaHei" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Text" Value="{Binding AwardsName}" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsAlreadyLottery}" Value="true">
+                <Setter Property="Foreground" Value="#000000" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="AwardsNameIntervalStyle" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="#b5b5b5" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Text" Value=" ··· " />
+        <Setter Property="Margin" Value="0,5,0,10" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsAlreadyLottery}" Value="True">
+                <Setter Property="Foreground" Value="Black" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding IsLastAward}" Value="true">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="ListBoxBackgroundStyle" TargetType="Grid">
+        <Setter Property="Background" Value="#4e4e4e" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsDrawerPassOnePage}" Value="true">
+                <Setter Property="Background" Value="#f1f1f1" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="TaskBarStyle" TargetType="StackPanel">
+        <Setter Property="Background" Value="#3448a1" />
+        <Setter Property="Orientation" Value="Horizontal" />
+    </Style>
+
+    <Style x:Key="DrawerTitleStackPanelStyle" TargetType="StackPanel">
+        <Setter Property="Background" Value="#4e4e4e" />
+        <Setter Property="Orientation" Value="Horizontal" />
+    </Style>
+
+    <Style x:Key="AwardsListBoxStyle" TargetType="ListBox">
+        <Setter Property="Width" Value="300" />
+        <Setter Property="Height" Value="40" />
+        <Setter Property="Margin" Value="-4,0,0,0" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Background" Value="#f1f1f1" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Style="{StaticResource AwardsNameStyle}" />
+                        <TextBlock Style="{StaticResource AwardsNameIntervalStyle}" />
+                    </StackPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CurrentAwardsNameStyle" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="MicrosoftYaHei" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Foreground" Value="Black" />
+    </Style>
+
+    <Style x:Key="DrawerIdStyle" TargetType="TextBlock">
+        <Setter Property="Width" Value="20" />
+        <Setter Property="Margin" Value="36,0,0,0" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="MicrosoftYaHei" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Foreground" Value="#1C1C1C" />
+        <Setter Property="Text" Value="{Binding Id}" />
+    </Style>
+
+    <Style x:Key="DrawerNameStyle" TargetType="TextBlock">
+        <Setter Property="Width" Value="60" />
+        <Setter Property="Margin" Value="86,0,0,0" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="MicrosoftYaHei" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Foreground" Value="#1C1C1C" />
+        <Setter Property="Text" Value="{Binding DrawName}" />
+    </Style>
+
+    <Style x:Key="DrawerCodeStyle" TargetType="TextBlock">
+        <Setter Property="Margin" Value="116,0,0,0" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="MicrosoftYaHei" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Foreground" Value="#1C1C1C" />
+        <Setter Property="Text" Value="{Binding DrawCode}" />
+    </Style>
+
+    <Style x:Key="DrawerListBoxStyle" TargetType="ListBox">
+        <Setter Property="Opacity" Value="0.7" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="BorderBrush" Value="#4e4e4e" />
+        <Setter Property="Background" Value="#DCDCDC" />
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <StackPanel Height="39" Orientation="Horizontal">
+                        <TextBlock Style="{StaticResource DrawerIdStyle}" />
+                        <TextBlock Style="{StaticResource DrawerNameStyle}" />
+                        <TextBlock Style="{StaticResource DrawerCodeStyle}" />
+                    </StackPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="DrawerListBoxBackgroundStyle" TargetType="Border">
+        <Setter Property="Background" Value="#f1f1f1" />
+        <Setter Property="BorderBrush" Value="#4e4e4e" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="Opacity" Value="0.3" />
+    </Style>
+
+    <Style x:Key="TitleIdStyle" TargetType="TextBlock">
+        <Setter Property="Width" Value="29" />
+        <Setter Property="Margin" Value="38,13,0,8" />
+        <Setter Property="FontFamily" Value="MicrosoftYaHei" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Foreground" Value="#f1f1f1" />
+        <Setter Property="Text" Value="序号" />
+    </Style>
+
+    <Style x:Key="TitleNameStyle" TargetType="TextBlock">
+        <Setter Property="Width" Value="30" />
+        <Setter Property="Margin" Value="86,13,0,8" />
+        <Setter Property="FontFamily" Value="MicrosoftYaHei" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Foreground" Value="#f1f1f1" />
+        <Setter Property="Text" Value="姓名" />
+    </Style>
+
+    <Style x:Key="TitleCodeStyle" TargetType="TextBlock">
+        <Setter Property="Width" Value="46" />
+        <Setter Property="Margin" Value="144,13,0,8" />
+        <Setter Property="FontFamily" Value="MicrosoftYaHei" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Foreground" Value="#f1f1f1" />
+        <Setter Property="Text" Value="身份证" />
+    </Style>
+</ResourceDictionary>
